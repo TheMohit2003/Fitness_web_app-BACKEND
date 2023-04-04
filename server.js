@@ -1,10 +1,30 @@
+// Import required modules
 const express = require('express');
+const dotenv = require('dotenv').config();
+
+// Set the port number to use, default to 5000
+const port = process.env.PORT || 5000;
+
+// Import custom error handler middleware
+const { errorHandler } = require('./middlewares/errorMiddleware');
+
+// Connect to the database
+const connectDB = require('./config/db');
+
+connectDB();
+
+// Create an instance of the express app
 const app = express();
-require('dotenv').config()
-const PORT = process.env.PORT || 5000;
 
-app.use(express.json())
+// Set up middleware for parsing JSON and URL encoded data
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.listen(PORT , ()=>{
-    console.log(`the port is running on ${PORT}`)
-})
+// Set up routes for handling user requests
+app.use('/users', require('./routes/userRoutes'));
+
+// Use the custom error handler middleware to handle errors
+app.use(errorHandler);
+
+// Start the server and listen for requests on the specified port
+app.listen(port, () => console.log(`server running on port ${port}`));
