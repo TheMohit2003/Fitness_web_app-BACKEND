@@ -1,7 +1,7 @@
 // Import required modules
 const express = require('express');
 const dotenv = require('dotenv').config();
-
+const cors = require('cors');
 // Set the port number to use, default to 5000
 const port = process.env.PORT || 5000;
 
@@ -12,6 +12,9 @@ const { errorHandler } = require('./middlewares/errorMiddleware');
 const connectDB = require('./config/db');
 
 connectDB();
+
+// enable CORS for all routes
+app.use(cors());
 
 // Create an instance of the express app
 const app = express();
