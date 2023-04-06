@@ -13,11 +13,13 @@ const connectDB = require('./config/db');
 
 connectDB();
 
-// enable CORS for all routes
-app.use(cors());
+
 
 // Create an instance of the express app
 const app = express();
+
+// enable CORS for all routes
+app.use(cors());
 
 // Set up middleware for parsing JSON and URL encoded data
 app.use(express.json());
