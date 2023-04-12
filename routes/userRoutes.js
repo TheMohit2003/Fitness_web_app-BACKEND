@@ -3,11 +3,10 @@ const express = require('express');
 const router = express.Router();
 const { registerUser, loginUser } = require('../controllers/userController');
 const { protect } = require('../middlewares/authMiddleware');
+const { postMedicalData } = require('../controllers/medicalDataController');
 
-router.get('/', protect, (req, res) => {
-    res.send({ msg: 'yep , the auth is working' });
-});
 router.post('/register', registerUser);
 router.post('/login', loginUser);
+router.post('/:userId/medicaldata', postMedicalData);
 
 module.exports = router;
