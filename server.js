@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Set up routes for handling user requests
-app.use('/users', require('./routes/userRoutes'));
+app.use('/', require('./routes/userRoutes'));
 
 // Use the custom error handler middleware to handle errors
 app.use(errorHandler);
