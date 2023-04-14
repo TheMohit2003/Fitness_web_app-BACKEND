@@ -5,23 +5,14 @@ const MedicalDataSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  height: {
-    type: Number,
-    required: true
+  name:{
+    type:String,
+    required:true
   },
-  weight: {
-    type: Number,
-    required: true
-  },
-  age: {
-    type: Number,
-    required: true
-  },
-  gender: {
-    type: String,
-    enum: ['male', 'female'],
-    required: true
-  },
+  maxCalorie:{
+    type:Number,
+    required:true
+  }
   // other fields related to medical data
 });
 
