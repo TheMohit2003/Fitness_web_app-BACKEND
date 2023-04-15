@@ -13,8 +13,6 @@ const connectDB = require('./config/db');
 
 connectDB();
 
-
-
 // Create an instance of the express app
 const app = express();
 
