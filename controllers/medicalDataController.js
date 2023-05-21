@@ -14,8 +14,9 @@ const postMedicalData = asyncHandler(async (req, res) => {
         const userId = req.params.userId; // get the user id from the URL params
         const medicalRecord = new MedicalData({
             user: userId,
-            name: req.body.name,
-            maxCalorie: req.body.maxCalorie,
+            age: req.body.age,
+            illness: req.body.illness,
+            allergy:req.body.allergy
         });
         const savedRecord = await medicalRecord.save();
         res.json(savedRecord);

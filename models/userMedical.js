@@ -5,14 +5,18 @@ const MedicalDataSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    name: {
-        type: String,
-        required: true,
-    },
-    maxCalorie: {
+    age: {
         type: Number,
         required: true,
     },
+    illness: {
+        type: String,
+        required: true,
+    },
+    allergy:{
+        type:String,
+        required:true,
+    }
     // other fields related to medical data
 });
 
