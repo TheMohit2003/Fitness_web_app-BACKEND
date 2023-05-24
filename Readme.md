@@ -1,109 +1,51 @@
-# Project Name
+# API Documentation
 
-A brief description of the project.
+This API provides endpoints for authentication, user progress data, and user posts.
 
-## Table of Contents
+## Authentication
 
--   [Installation](#installation)
--   [Usage](#usage)
--   [API Endpoints](#api-endpoints)
--   [Technologies Used](#technologies-used)
--   [Contributing](#contributing)
--   [License](#license)
+- `POST /register` - Register a new user.
+- `POST /login` - User login.
 
-## Installation
+## User Progress Data
 
-1. Clone the repository.
-2. Install dependencies by running `npm install`.
-3. Set up the environment variables in `.env` file.
-4. Start the server by running `npm start`.
+- `GET /getAllData` - Get all progress data.
+- `GET /:userId/getProgressData` - Get progress data for a specific user.
+- `POST /:userId/progressData` - Post progress data for a specific user.
 
-## Usage
+## User Posts
 
-A brief description of how to use the application.
+- `GET /:userId/getPost` - Get a specific post for a user.
+- `GET /userPost` - Get all user posts.
+- `POST /:userId/userPost` - Create a new user post.
+- `DELETE /post/:postId` - Delete a specific post.
+- `PUT /post/:postId` - Edit a specific post.
 
-## API Endpoints
+## Models
 
-### <span style="background-color: #fff;color:blue;padding:5px">Register User</span>
+### UserModel
 
-Registers a new user with the provided name, email, and password.
+Fields:
 
--   **URL:** `/api/users`
--   **Method:** `POST`
--   **Request Body:**
+- `username` (String, required) - The username of the user.
+- `password` (String, required) - The password of the user.
+- `email` (String, required) - The email of the user.
 
-```
-{
-"name": "John Doe",
-"email": "johndoe@example.com",
-"password": "password123"
-}
-```
+### PostModel
 
--   **Success Response:**
+Fields:
 
--   **Status Code:** `201 Created`
--   **Response Body:**
+- `title` (String, required) - The title of the post.
+- `content` (String, required) - The content of the post.
 
-    ```
-    {
-      "_id": "614ba82f6d267eb1a816f1e2",
-      "name": "John Doe",
-      "email": "johndoe@example.com",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGJhODJmNmQyNjdlYjFhODE2ZjFlMiIsImlhdCI6MTYzMjMzODM0NCwiZXhwIjoxNjM1OTczMzQ0fQ.SVhrtJLEpbykRVvyBZ97dU6ZTHwBYZzLPv0a17RpWcQ"
-    }
-    ```
+### ProgressDataModel
 
--   **Error Response:**
+Fields:
 
--   **Status Code:** `400 Bad Request`
--   **Response Body:** `Please fill in all fields`
+- `smoked` (Number) - The number of times smoked.
 
--   **Status Code:** `409 Conflict`
--   **Response Body:** `User already exists`
+## Error Handling
 
-### <span style="background-color: #fff;color:blue;padding:5px">Login User</span>
+- 404 Not Found - When a resource is not found.
+- 500 Internal Server Error - When an unexpected error occurs.
 
-Authenticates a user with the provided email and password.
-
--   **URL:** `/api/users/login`
--   **Method:** `POST`
--   **Request Body:**
-
-```
-{
-"email": "johndoe@example.com",
-"password": "password123"
-}
-```
-
--   **Success Response:**
-
--   **Status Code:** `200 OK`
--   **Response Body:**
-
-    ```
-    {
-      "_id": "614ba82f6d267eb1a816f1e2",
-      "name": "John Doe",
-      "email": "johndoe@example.com",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGJhODJmNmQyNjdlYjFhODE2ZjFlMiIsImlhdCI6MTYzMjMzODM0NCwiZXhwIjoxNjM1OTczMzQ0fQ.SVhrtJLEpbykRVvyBZ97dU6ZTHwBYZzLPv0a17RpWcQ"
-    }
-    ```
-
--   **Error Response:**
-
--   **Status Code:** `401 Unauthorized`
--   **Response Body:** `Invalid email or password`
-
-## Technologies Used
-
--   Node.js
--   Express
--   bcryptjs
--   jsonwebtoken
--   mongoose
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
