@@ -25,9 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 
 // Set up routes for handling user requests
 app.use('/', require('./routes/userRoutes'));
-app.use('*',(req,res)=>{
-    res.send("not available")
-})
+app.use('*', (req, res) => {
+    res.send('not available');
+});
 // Use the custom error handler middleware to handle errors
 app.use(errorHandler);
 
