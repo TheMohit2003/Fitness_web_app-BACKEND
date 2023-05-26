@@ -4,6 +4,7 @@ const router = express.Router();
 const { registerUser, loginUser } = require('../controllers/userController');
 const { protect } = require('../middlewares/authMiddleware');
 const { postProgressData } = require('../controllers/userProgressController');
+const { storeMedicalData } = require('../controllers/userMedicalController')
 const {
     getAllData,
     getSpecificData,
@@ -28,6 +29,12 @@ router.post('/login', loginUser);
 router.get('/getAllData', getAllData);
 router.get('/:userId/getProgressData', getSpecificData);
 router.post('/:userId/progressData', postProgressData);
+
+/**
+ * @description - post for storing medical data ( age , number of smoked)
+ */
+
+router.post('/:userId/medicalData',storeMedicalData)
 
 /**
  * @description - the below routes are for posting posts related to user's posts
