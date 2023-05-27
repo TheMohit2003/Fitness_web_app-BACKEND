@@ -9,8 +9,21 @@ const medicalSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    smoked: {
+    avgSmoked: {
         type: Number,
+        required: true,
+    },
+    height: {
+        type: Number,
+        required: true,
+    },
+    weight: {
+        type: Number,
+        required: true,
+    },
+    gender: {
+        type: String,
+        enum: ['male', 'female'],
         required: true,
     },
     created_at: {
@@ -19,6 +32,6 @@ const medicalSchema = new mongoose.Schema({
     },
 });
 
-const Post = mongoose.model('Medical', medicalSchema);
+const MedicalData = mongoose.model('Medical', medicalSchema);
 
-module.exports = Post;
+module.exports = MedicalData;
