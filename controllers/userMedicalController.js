@@ -36,7 +36,7 @@ const storeMedicalData = async (req, res) => {
     }
   };
 
-const getMedicalData = async (req, res) => {
+  const getMedicalData = async (req, res) => {
     const userId = req.params.userId;
   
     try {
@@ -81,6 +81,7 @@ const getMedicalData = async (req, res) => {
       res.status(500).json({ error: 'An error occurred while retrieving the medical data.' });
     }
   };
+  
   
   // Function to calculate lung capacity percentage
   const calculateLungCapacityPercentage = (age, gender, height, weight) => {
